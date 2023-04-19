@@ -1,0 +1,1 @@
+a reconstruction of a seismometer in esp32 for a science project
