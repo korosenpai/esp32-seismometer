@@ -20,12 +20,8 @@ while (data_packet := str(serial_data.readline(), "utf-8")) != "all set up, star
     print(data_packet)
 
 
-pygame.init()
 
-# WIDTH = 640
-# HEIGHT = 480
-# GRID_SIZE = 15
-# AXIS_PADDING = 20
+pygame.init()
 
 AXIS_PADDING = 50
 AXIS_WIDTH = 3
@@ -79,6 +75,7 @@ while True:
             (ORIGINX + AXIS_STEP__LENGTH, ORIGINY - AXIS_STEP_Y * (i - 1)),
             (ORIGINX - AXIS_STEP__LENGTH, ORIGINY - AXIS_STEP_Y * (i - 1)),
         AXIS_WIDTH)
+
         y_graph_number = FONT.render(str(AXIS_STEP_VALUE - 5 * (i - 1)) , False, (0, 0, 0))
         screen.blit(y_graph_number,
             (
@@ -93,11 +90,12 @@ while True:
             (ORIGINX + AXIS_STEP_X * i, ORIGINY - AXIS_STEP__LENGTH),
             (ORIGINX + AXIS_STEP_X * i, ORIGINY + AXIS_STEP__LENGTH),
         AXIS_WIDTH)
-        y_graph_number = FONT.render(str(AXIS_STEP_VALUE * i) , False, (0, 0, 0))
-        screen.blit(y_graph_number,
+
+        x_graph_number = FONT.render(str(AXIS_STEP_VALUE * i) , False, (0, 0, 0))
+        screen.blit(x_graph_number,
             (
-                ORIGINX + AXIS_STEP_X * i - y_graph_number.get_width() / 2,
-                ORIGINY + 2 * AXIS_STEP__LENGTH - y_graph_number.get_height() / 2
+                ORIGINX + AXIS_STEP_X * i - x_graph_number.get_width() / 2,
+                ORIGINY + 2 * AXIS_STEP__LENGTH - x_graph_number.get_height() / 2
             )
         )
 
@@ -115,6 +113,8 @@ while True:
         y.pop(0)
 
     y.append(data_packet["accel"][0])
+
+    # TODO
 
     # pygame.draw.lines(screen, (0, 0, 0), False, [ORIGINX + ], 5)
 
