@@ -1,4 +1,4 @@
-# https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html
+# 3 component -> separate x, y and z detected in their own graph
 
 import serial
 from time import sleep
