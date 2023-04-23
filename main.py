@@ -6,6 +6,16 @@ from json import loads
 
 from matplotlib import pyplot as plt
 
+MAX_X = 100 # change value of x axis # overall it will impact velocity of plot when sliding
+
+# create axis data variables
+x = list(range(MAX_X))
+y = {
+    "x": [], # x recieved from sensor
+    "y": [],
+    "z": []
+}
+
 # Initialize plot
 # create matplotlib figure and axes
 fig, ax = plt.subplots(3)
@@ -16,37 +26,26 @@ lines = {
     "z": ax[2].plot([], [])[0]
 }
 
-# show the plot
-plt.show(block=False)
+plt.show(block=False) # show the plot
 
-
-# ax[0].plot()
-# ax[1].plot()
-# ax[2].plot()
 
 # Set the y-axis range
-MAX_X = 300
 for elem in ax:
-    elem.set_ylim(-20, 20)  # Set the maximum y-axis limit to 1
-    elem.set_xlim(0, MAX_X + MAX_X * 0.2)  # Set the maximum y-axis limit to 1
+    elem.set_ylim(-20, 20)
+    elem.set_xlim(0, MAX_X + MAX_X * 0.2) # + 20% to create padding effect
     elem.get_xaxis().set_visible(False) # or -> ax.set_xticklabels([]) ## to hide x axis labels
 
-ax[0].set_title("onde p", fontstyle = "italic", loc = "left", fontsize = "medium")
-ax[1].set_title("onde s", fontstyle = "italic", loc = "left", fontsize = "medium")
+
+ax[0].set_title("onde sotterranee", fontstyle = "italic", loc = "left", fontsize = "medium")
+ax[1].set_title("onde sotterranee", fontstyle = "italic", loc = "left", fontsize = "medium")
 ax[2].set_title("onde superficiali", fontstyle = "italic", loc = "left", fontsize = "medium")
 
 
-x = list(range(MAX_X))
-y = {
-    "x": [], # x recieved from sensor
-    "y": [],
-    "z": []
-}
 
-# initialize
+# initialize serial
 BAUDRATE = 115200
 serial_data = serial.Serial("com10", BAUDRATE)
-sleep(1)
+
 
 # when no data is passed
 while serial_data.in_waiting == 0:
@@ -69,18 +68,17 @@ while True:
     print(data_packet)
 
     for n, axis in enumerate(y):
-        if len(y[axis]) >= MAX_X:
+
+        if len(y[axis]) >= MAX_X: # avoid holding data greater than axis # will slide out of view and crash
             y[axis].pop(0)
 
-        y[axis].append(data_packet["accel"][n])    
+        y[axis].append(data_packet["accel"][n])
 
-        lines[axis].set_xdata(x[MAX_X - len(y[axis]):]) # print only x to same number of 'y[axis]' values # starting from end so then it gets traslated
+        # print only x to same number of 'y[axis]' values # starting from end to create sliding effect
+        lines[axis].set_xdata(x[MAX_X - len(y[axis]):])
         lines[axis].set_ydata(y[axis])
 
-    ax[0].relim()
-    ax[1].relim()
-    ax[2].relim()
-    # ax.autoscale_view()
+
     fig.canvas.draw()
     fig.canvas.flush_events()
 
