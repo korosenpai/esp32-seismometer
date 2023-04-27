@@ -10,6 +10,7 @@ from matplotlib import pyplot as plt
 # create matplotlib figure and axes
 fig, ax = plt.subplots()
 line, = ax.plot([], [])
+plt.ylabel("force")
 
 # show the plot
 plt.show(block=False)
