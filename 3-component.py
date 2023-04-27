@@ -6,7 +6,7 @@ from json import loads
 
 from matplotlib import pyplot as plt
 
-MAX_X = 100 # change value of x axis # overall it will impact velocity of plot when sliding
+MAX_X = 500 # change value of x axis # overall it will impact velocity of plot when sliding
 
 # create axis data variables
 x = list(range(MAX_X))
@@ -36,9 +36,9 @@ for elem in ax:
     elem.get_xaxis().set_visible(False) # or -> ax.set_xticklabels([]) ## to hide x axis labels
 
 
-ax[0].set_title("onde sotterranee", fontstyle = "italic", loc = "left", fontsize = "medium")
-ax[1].set_title("onde sotterranee", fontstyle = "italic", loc = "left", fontsize = "medium")
-ax[2].set_title("onde superficiali", fontstyle = "italic", loc = "left", fontsize = "medium")
+ax[0].set_title("X; onde superficiali", fontstyle = "italic", loc = "left", fontsize = "medium")
+ax[1].set_title("Y; onde superficiali", fontstyle = "italic", loc = "left", fontsize = "medium")
+ax[2].set_title("Z; onde sotterranee", fontstyle = "italic", loc = "left", fontsize = "medium")
 
 
 
