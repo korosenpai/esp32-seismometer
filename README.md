@@ -1,3 +1,28 @@
+<!-- Output copied to clipboard! -->
+
+<!-----
+
+Yay, no errors, warnings, or alerts!
+
+Conversion time: 0.844 seconds.
+
+
+Using this Markdown file:
+
+1. Paste this output into your source file.
+2. See the notes and action items below regarding this conversion run.
+3. Check the rendered output (headings, lists, code blocks, tables) for proper
+   formatting and use a linkchecker before you publish this page.
+
+Conversion notes:
+
+* Docs to Markdown version 1.0β34
+* Thu Apr 27 2023 08:06:13 GMT-0700 (PDT)
+* Source doc: sismografo
+----->
+
+
+
 ## il sismografo
 
 
@@ -192,21 +217,12 @@ controlla solo la quantità di energia rilasciata da un terremoto ma non di cosa
 
 esempio:
 
-```
-
-terremoto di magn. 7.8 in nepal 2015 aprile 25
 
 
-
+* terremoto di magn. 7.8 in nepal 2015 aprile 25
 * distrusse edifici, uccise migliaia e causò una valanga
-
-terremoto di magn. 7.3 in nepal 2015 maggio 12
-
-
-
+* terremoto di magn. 7.3 in nepal 2015 maggio 12
 * causò panico e uccise una decina di persone
-
-```
 
 fa veramente cosi tanta differenza 0.5? dipende dal contesto e tutte le variabili elencate prima.
 
