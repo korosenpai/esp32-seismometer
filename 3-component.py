@@ -1,7 +1,6 @@
 # 3 component -> separate x, y and z detected in their own graph
 
 import serial
-from time import sleep
 from json import loads
 
 from matplotlib import pyplot as plt
@@ -55,9 +54,6 @@ while serial_data.in_waiting == 0:
 while (data_packet := str(serial_data.readline(), "utf-8")) != "all set up, starting to send data...\r\n":
     print(data_packet)
 
-# when no data is passed
-while serial_data.in_waiting == 0:
-    pass
 
 while True:
 
