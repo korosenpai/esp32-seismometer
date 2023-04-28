@@ -41,10 +41,6 @@ while serial_data.in_waiting == 0:
 while (data_packet := str(serial_data.readline(), "utf-8")) != "all set up, starting to send data...\r\n":
     print(data_packet)
 
-# when no data is passed
-while serial_data.in_waiting == 0:
-    pass
-
 while True:
 
     # read data
@@ -61,7 +57,7 @@ while True:
     line.set_xdata(x[MAX_X - len(y):]) # print only x to same number of y values # starting from end so then it gets traslated
     line.set_ydata(y)
 
-    ax.relim()
+    # ax.relim()
     # ax.autoscale_view()
     fig.canvas.draw()
     fig.canvas.flush_events()
